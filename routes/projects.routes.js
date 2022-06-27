@@ -1,11 +1,10 @@
 const router = require("express").Router();
-const projectsController = require("../controllers/ projectsControllers");
-const multer = require("../middleware/multer-config")
+const projectCtrl = require("../controllers/projects");
 
-router.get("/", projectsController.findProjects);
-router.get("/:_id", projectsController.findOneProject);
-router.post("/newPjt", multer, projectsController.createProject);
-router.put("/:_id", projectsController.updateProject);
-router.delete("/:_id", projectsController.deleteProject);
+router.get("/", projectCtrl.allPjts);
+router.get("/:_id", projectCtrl.findOnePjt);
+router.post("/newPjt", projectCtrl.newPjt);
+router.put("/:_id", projectCtrl.updatePjt);
+router.delete("/:_id", projectCtrl.deletePjt);
 
 module.exports = router;
